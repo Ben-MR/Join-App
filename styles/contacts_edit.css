@@ -263,7 +263,7 @@ input:-webkit-autofill {
 
 .edit-contact-bottom-clear {
     width: 80px;
-    background:no-repeat center right 10%/ auto url(asset/images/cancel-btn.svg);
+    background:no-repeat center right 10%/ auto url(./../asset/images/cancel-btn.svg);
     border: 1px solid var(--btn-color);
     border-radius: 10px;
     font-weight: bold;
@@ -272,12 +272,12 @@ input:-webkit-autofill {
 .edit-contact-bottom-clear:hover {
     border: 1px solid var(--divider);
     color: var(--divider);
-    background:no-repeat center right 10%/ auto url(asset/images/cancel-btn-hover.svg);
+    background:no-repeat center right 10%/ auto url(./../asset/images/cancel-btn-hover.svg);
 }
 
 .edit-contact-bottom-save {
     width: 75px;
-    background:no-repeat center right 10%/ auto url(asset/images/create-btn.svg);
+    background:no-repeat center right 10%/ auto url(./../asset/images/create-btn.svg);
     border-radius: 10px;
     font-weight: 900;
     background-color: var(--btn-color);
@@ -285,7 +285,7 @@ input:-webkit-autofill {
 }
 
 .edit-contact-bottom-save:hover {
-    background:var(--divider) no-repeat center right 10%/ auto url(asset/images/create-btn.svg);
+    background:var(--divider) no-repeat center right 10%/ auto url(./../asset/images/create-btn.svg);
 }
 
 @media (max-width: 400px) {

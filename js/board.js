@@ -62,9 +62,12 @@ async function getAllTasks() {
  * 
  */
 async function getAllContactsBoard() {
-    let response = await fetch(BASE_URL_CONTACT  + '.json');
-    let responseJson = await response.json();  
-    let keys = Object.keys(responseJson);  
+    let response = await fetch(BASE_URL_CONTACT + '.json');
+    let responseJson = await response.json();
+    if (!responseJson) {
+        return; 
+    }
+    let keys = Object.keys(responseJson);
     for (let index = 0; index < keys.length; index++) {
         let allContacts = responseJson[keys[index]];
         allContactsBoard.push(allContacts);                 
@@ -140,6 +143,7 @@ function showNoTasksContainer() {
  * transformed for Initials
  */
 function renderTodo(index) {
+    if (allTasks[index].id === "__placeholder__") return;
     let ToDo = document.getElementById('ToDo'); 
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
     let names = allTasks[index].assigned.split(',');

@@ -166,21 +166,21 @@
 }
 
 .contact-detail-edit {
-    background-image: url(asset/images/edit.svg);
+    background-image: url(./../asset/images/edit.svg);
 }
 
 .contact-detail-edit:hover {
-    background-image: url(asset/images/edit-hover.svg);
+    background-image: url(./../asset/images/edit-hover.svg);
 }
 
 .contact-detail-delete {
-    background-image: url(asset/images/delete.svg);
+    background-image: url(./../asset/images/delete.svg);
     width: 130px !important;
     background-position: 7% center !important;
 }
 
 .contact-detail-delete:hover {
-    background-image: url(asset/images/delete-hover.svg);
+    background-image: url(./../asset/images/delete-hover.svg);
 }
 
 .contact-detail-buttons button:hover {
