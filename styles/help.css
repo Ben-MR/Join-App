@@ -1,0 +1,39 @@
+.join-text {
+    color: rgb(41, 171, 226);
+    font-weight: bold;
+}
+.contact-info {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.help-container {
+    padding: 0 50px 50px;
+}
+
+.help-container h2 {
+    margin-top: 20px;
+}
+
+.help-container h3 {
+    margin-top: 10px;
+}
+
+.headline-continer{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 50px;
+    
+}
+
+@media (max-width: 500px){
+    .headline{
+        margin-right: 20px;
+        margin-left: 30px;
+    }
+    .headline-continer{
+        width: 80%;
+          
+    }
+}
