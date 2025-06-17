@@ -46,8 +46,11 @@ function renderInitials(activeUser) {
  */
 async function getAllTasks() {
     let response = await fetch(BASE_URL_TASK + '.json');
-    let responseJson = await response.json();  
-    let keys = Object.keys(responseJson);   
+    let responseJson = await response.json();
+    if (!responseJson) {
+        return;
+    }
+    let keys = Object.keys(responseJson);
     for (let index = 0; index < keys.length; index++) {
         let task = responseJson[keys[index]];
         task.firebaseID = keys[index];

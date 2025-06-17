@@ -30,20 +30,30 @@ function filterContacts() {
  * @var {string[]} keys - The Firebase-generated keys for each contact entry.
  * @var {Array<Object>} allContacts - An array of contact objects in the format { key: contactData }.
  */
-  async function getAllContacts(preSelectedNames = []) {
-    let response = await fetch(BASE_URL_CONTACT + ".json");
-    let responseJSON = await response.json();
-    let keys = Object.keys(responseJSON);
-    let allContacts = [];
-  
-    for (let index = 0; index < keys.length; index++) {
-      let key = keys[index];
-      let value = responseJSON[key];
-      if (responseJSON[key]) allContacts.push({ [key]: value });
-    }
-  
-    renderContactsInDropdown(allContacts, preSelectedNames); 
+async function getAllContacts(preSelectedNames = []) {
+  let response = await fetch(BASE_URL_CONTACT + ".json");
+  let responseJSON = await response.json();
+  if (!responseJSON) {
+    renderContactsInDropdown([], preSelectedNames); 
+    return;
   }
+  let keys = Object.keys(responseJSON);
+  let allContacts = [];
+  for (let index = 0; index < keys.length; index++) {
+    getConactsValue(index);
+  }
+  renderContactsInDropdown(allContacts, preSelectedNames);
+}
+
+//** 
+// Pushes all contacts in allCotacts-object
+// */
+function getConactsValue(index) {
+    let key = keys[index];
+    let value = responseJSON[key];
+    if (value) allContacts.push({ [key]: value });
+}
+
 
 /**
  * Renders all provided contacts into the dropdown menu.
@@ -57,17 +67,23 @@ function filterContacts() {
  * @var {[string, Object]} key/value - The extracted key-value pair from each contact object.
  * @var {HTMLElement} contactItem - The DOM element representing a single contact entry.
  */
-  function renderContactsInDropdown(allContacts, preSelectedNames = []) {
-    const container = document.getElementById("dropdownContent");
-    container.innerHTML = "";
-  
-    allContacts.forEach((contactObj) => {
-      const [key, value] = Object.entries(contactObj)[0];
-      const contactItem = createContactItem(key, value, preSelectedNames); 
-      container.appendChild(contactItem);
-    });
-    handleSelectionChange();
+function renderContactsInDropdown(allContacts, preSelectedNames = []) {
+  const container = document.getElementById("dropdownContent");
+  if (!container) {
+    console.warn('Element #dropdownContent nicht gefunden. Überspringe Rendering.');
+    return;
   }
+
+  container.innerHTML = "";
+
+  for (let i = 0; i < allContacts.length; i++) {
+    const [key, value] = Object.entries(allContacts[i])[0];
+    const contactItem = createContactItem(key, value, preSelectedNames);
+    container.appendChild(contactItem);
+  }
+
+  handleSelectionChange();
+}
     
 /**
  * Creates a contact item element with name, color, and selection checkbox.
